@@ -18,7 +18,7 @@ pexpect.run('sudo chmod 755 Mal_pack_find.py')
 pexpect.run('pip install pytz')
 
 import pytz
-#-------------------Creating_log_if_doesn't_exist_alr-------------------------- (FIX THIS================================================================================)
+#-------------------Creating_log_if_doesn't_exist_alr-------------------------- 
 if not(os.path.exists(pexpect.run(f'pwd').decode('UTF-8').strip() + '/Mal_pack_log.txt')):
   with open(r'Mal_pack_log.txt', 'w') as file: 
     file.close()
