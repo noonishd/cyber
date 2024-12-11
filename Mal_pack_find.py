@@ -8,16 +8,19 @@ import os
 import subprocess
 import sys
 import time
-import pexpect
 from datetime import datetime
 
+os.system('sudo apt install pip -y')
+os.system('pip install pexpect')
+os.system('pip install pytz')
 
-pexpect.run('sudo su')
-pexpect.run('clear')
-pexpect.run('sudo chmod 755 Mal_pack_find.py')
-pexpect.run('pip install pytz')
-
+import pexpect
 import pytz
+
+os.system('sudo chmod 755 List_users.py')
+pexpect.run('sudo su')
+os.system('clear')
+
 #-------------------Creating_log_if_doesn't_exist_alr-------------------------- 
 if not(os.path.exists(pexpect.run(f'pwd').decode('UTF-8').strip() + '/Mal_pack_log.txt')):
   with open(r'Mal_pack_log.txt', 'w') as file: 
