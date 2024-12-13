@@ -9,8 +9,14 @@ import subprocess
 import sys
 import time
 from datetime import datetime
+
+os.system('sudo apt install pip -y')
+os.system('pip install pytz')
+
 import pytz
 
+os.system('sudo chmod 755 List_users.py')
+#os.system('sudo su')
 
 def run(cmd):
     output_lines = []
