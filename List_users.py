@@ -40,6 +40,8 @@ valid_shells = run('cat /etc/shells')[1:]
 users = run('cat /etc/passwd')
 
 print(f"Valid Shells in /etc/shells:\n{valid_shells}\n")
+with open(r'Users.txt', 'a') as file:
+    file.write(f"Valid Shells in /etc/shells:\n{valid_shells}\n\n\n\n")
 
 for user in users:
   user = user.split(':')
