@@ -2,10 +2,13 @@
 
 import os
 import subprocess
-os.system('sudo apt install pip -y')
-os.system('pip install pytz')
-import pytz
+try:
+    import pytz
+except ModuleNotFoundError:
+    os.system('sudo apt install pip -y')
+    os.system('pip install pytz')
 from datetime import datetime
+
 
 def run(cmd):
     output_lines = []
@@ -19,18 +22,24 @@ def run(cmd):
 
     return output_lines
 
-def doubleprint(text):
-    with open(r'master_log.txt', 'a') as file: 
-                file.write(text)
-    print(text, end="")
+def doubleprint(text, sendfile=True, sendtext=True):
+    if sendfile:
+        with open(r'master_log.txt', 'a') as file: 
+            file.write(text)
+    if sendtext:
+        print(text, end="")
 
 
 #-------------------Creating_log_if_doesn't_exist_alr-------------------------- (FIX THIS================================================================================)
 if not(os.path.exists(run('pwd')[0] + '/master_log.txt')):
-  with open(r'master_log.txt', 'w') as file: 
-    file.write(f'\n\n\n\n\n\nLog created: {datetime.now(pytz.timezone("Canada/Pacific")).strftime("%I:%M:%S:%p")}')
+    with open(r'master_log.txt', 'w') as file: 
+        file.write(f'\n\n\n\n\n\nLog created: {datetime.now(pytz.timezone("Canada/Pacific")).strftime("%I:%M:%S:%p")}')
 
-os.system('sudo chmod 755 Mal_pack_find.py')
-os.system('sudo chmod 755 List_users.py')
-import List_users
-import Mal_pack_find #mal is running before list issue here
+if __name__ == '__main__':
+    os.system('sudo chmod 755 Mal_pack_find.py')
+    os.system('sudo chmod 755 List_users.py')
+    from List_users import main1
+    from Mal_pack_find import main2
+
+    main1()
+    main2()
