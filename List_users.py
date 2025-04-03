@@ -12,6 +12,7 @@ def main1():
   users = run('cat /etc/passwd')
 
   doubleprint(f"Valid Shells in /etc/shells:\n{valid_shells}\n\n\n\n")
+  current_user = run('whoami')[0]
 
   for user in users:
     user = user.split(':')
@@ -23,7 +24,8 @@ def main1():
         doubleprint('                      Hidden User!\n')
       elif int(user[2]) >= 1000:
         doubleprint('                      Valid User\n')
-      doubleprint('                      Valid User\n', sendtext=False)
+      if user[0] == current_user:
+        doubleprint('                          ↑  YOU!!!!!\n\n') 
       
       admin_check = ('adm' in run(f'groups {user[0]}')[0].split())
 
