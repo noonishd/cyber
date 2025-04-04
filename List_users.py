@@ -70,7 +70,7 @@ def main1():
     users_in_group = (group.split(':')[3:])
     for user in users_in_group:
       doubleprint(f"{tab}{group_name}: {user}\n")
-  input('Press anything to continue...')
 
 if __name__ == '__main__':
   main1()
+  input('Press enter to continue...   ')
