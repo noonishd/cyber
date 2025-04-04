@@ -9,7 +9,12 @@ from main import run, doubleprint
 def main2():
 #-------------------initializing--------------------------------------------------------------------------------------------------------------------------------------
 
-    package_list = ['apache2', 'remmina', 'deluge', 'tcpdump', 'iodine', 'iodine-client', 'manaplus', 'gameconqueror', 'wireshark', 'icecast', 'icecast2', 'zenmap', 'ndiff', 'nikto', 'p0f', 'deluge-gtk', 'ettercap', 'hashcat', 'logkeys', 'lkl', 'uberkey', 'nikito', 'tightvnc', 'pyrit', '4g8', 'squid', 'Burp Suite', 'kraken', 'crack', 'aircrack-ng', 'lcrack', 'pdfcrack', 'rarcrack', 'sipcrack', 'zeitgeist', 'nfs-common', 'Armitage', 'armitage', 'Metasploit', 'metasploit', 'ophcrack', 'tetris', 'netris', 'john', 'medusa', 'netcat', 'nmap', 'nginx', 'lolcat', 'fcrackzip', 'fof', 'goldeneye', 'hydra', 'samba', 'ssh', 'sucrack', 'unworkable', 'changeme']
+    package_list = ['apache2', 'remmina', 'deluge', 'tcpdump', 'iodine', 'iodine-client', 'manaplus', 'gameconqueror', 
+    'wireshark', 'icecast', 'icecast2', 'zenmap', 'ndiff', 'nikto', 'p0f', 'deluge-gtk', 'ettercap', 
+    'hashcat', 'logkeys', 'lkl', 'uberkey', 'nikito', 'tightvnc', 'pyrit', '4g8', 'squid', 'Burp Suite', 'kraken', 'crack', 
+    'aircrack-ng', 'lcrack', 'pdfcrack', 'rarcrack', 'sipcrack', 'zeitgeist', 'nfs-common', 'Armitage', 'armitage', 'Metasploit', 
+    'metasploit', 'ophcrack', 'tetris', 'netris', 'john', 'medusa', 'netcat', 'nmap', 'nginx', 'lolcat', 'fcrackzip', 'fof', 'goldeneye', 
+    'hydra', 'samba', 'ssh', 'sucrack', 'unworkable', 'changeme', 'endless-sky']
 
     check = input('Enter the REQUIRED programs separated by spaces:')
     check = list(set(check.split(' ')))
@@ -51,4 +56,4 @@ def main2():
 
 if __name__ == '__main__':
   main2()
-  input('Press anything to continue...')
+  input('Press enter to continue...   ')
