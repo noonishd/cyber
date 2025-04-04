@@ -36,10 +36,14 @@ if not(os.path.exists(run('pwd')[0] + '/master_log.txt')):
         file.write(f'\n\n\n\n\n\nLog created: {datetime.now(pytz.timezone("Canada/Pacific")).strftime("%I:%M:%S:%p")}')
 
 if __name__ == '__main__':
+    os.system('sudo chmod 755 main.py')
     os.system('sudo chmod 755 Mal_pack_find.py')
     os.system('sudo chmod 755 List_users.py')
+    os.system('sudo chmod 755 login_defs_config.py')
     from List_users import main1
     from Mal_pack_find import main2
+    from login_defs_config import main3
 
     main1()
     main2()
+    main3()
