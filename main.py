@@ -30,7 +30,7 @@ def doubleprint(text, sendfile=True, sendtext=True):
         print(text, end="")
 
 
-#-------------------Creating_log_if_doesn't_exist_alr-------------------------- (FIX THIS================================================================================) w
+#-------------------Creating_log_if_doesn't_exist_alr-------------------------- (FIX THIS===============================================================================) w
 if not(os.path.exists(run('pwd')[0] + '/master_log.txt')):
     with open(r'master_log.txt', 'w') as file: 
         file.write(f'\n\n\n\n\n\nLog created: {datetime.now(pytz.timezone("Canada/Pacific")).strftime("%I:%M:%S:%p")}')

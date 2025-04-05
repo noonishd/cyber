@@ -1,4 +1,3 @@
-#
 #sudo adduser frank
 #sudo adduser frank adm
 #sudo usermod --shell /usr/sbin/nologin frank

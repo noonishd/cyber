@@ -1,7 +1,7 @@
 #Double check iodines, icecasts, and ettercap
 #unable to find logkeys, nikito, tightvnc, pyrit, lcrack, fof, 
 #Check Burp Suite on ur own bc i think its uninstall is through gui
-#Check Armitage w
+#Check Armitage 
 
 from main import run, doubleprint
 

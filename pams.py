@@ -1,4 +1,4 @@
-#auth\trequired\t\t\tpam_permit.so\n w
+#auth\trequired\t\t\tpam_permit.so\n 
 #auth\trequisite\t\t\tpam_faillock.so\naudit deny=5 unlock_time=900 even_deny_root_account
 
 from main import run, doubleprint

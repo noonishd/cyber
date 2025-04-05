@@ -20,7 +20,7 @@ def main3():
         edits = file.readlines()
         set_back = file.readlines()
         for i in range(len(edits)):
-            if '!authenticate' in edits[i] or '!NOPASSWD' in edits[i]: #----------------------Check for bad things
+            if '!authenticate' in edits[i] or '!NOPASSWD' in edits[i]: #----------------------Check for bad thingsc
                 edits[i] = edits[i].replace('!authenticate', '').replace('!NOPASSWD', '')
                 doubleprint('\n\n!authenticate or !NOPASSWD FOUND\n\n')
             for word in keywords: #------------------------------------------------------------Comment out important stuff to append later
