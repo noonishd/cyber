@@ -14,7 +14,7 @@ def main2():
     'hashcat', 'logkeys', 'lkl', 'uberkey', 'nikito', 'tightvnc', 'pyrit', '4g8', 'squid', 'Burp Suite', 'kraken', 'crack', 
     'aircrack-ng', 'lcrack', 'pdfcrack', 'rarcrack', 'sipcrack', 'zeitgeist', 'nfs-common', 'Armitage', 'armitage', 'Metasploit', 
     'metasploit', 'ophcrack', 'tetris', 'netris', 'john', 'medusa', 'netcat', 'nmap', 'nginx', 'lolcat', 'fcrackzip', 'fof', 'goldeneye', 
-    'hydra', 'samba', 'ssh', 'sucrack', 'unworkable', 'changeme', 'endless-sky']
+    'hydra', 'samba', 'ssh', 'sucrack', 'unworkable', 'changeme', 'endless-sky', 'pvpgn']
 
     check = input('Enter the REQUIRED programs separated by spaces:')
     check = list(set(check.split(' ')))

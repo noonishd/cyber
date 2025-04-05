@@ -40,10 +40,10 @@ if __name__ == '__main__':
     os.system('sudo chmod 755 Mal_pack_find.py')
     os.system('sudo chmod 755 List_users.py')
     os.system('sudo chmod 755 login_defs_config.py')
-    from List_users import main1
-    from Mal_pack_find import main2
-    from login_defs_config import main3
+    from List_users import main1 as List_users
+    from Mal_pack_find import main2 as Mal_pack_find
+    from login_defs_config import main3 as login_defs_config
 
-    main1()
-    main2()
-    main3()
+    List_users()
+    Mal_pack_find()
+    login_defs_config()

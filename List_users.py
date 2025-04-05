@@ -25,32 +25,38 @@ def main1():
       elif int(user[2]) >= 1000:
         doubleprint('                      Valid User\n')
       if user[0] == current_user:
-        doubleprint('                          ↑  YOU!!!!!\n\n') 
-      
-      admin_check = ('adm' in run(f'groups {user[0]}')[0].split())
+        doubleprint('                          ↑  YOU!!!!!\n\n')
+        continue
 
+
+
+
+      admin_check = ('adm' in run(f'groups {user[0]}')[0].split())
       if admin_check:
         if 'n' == input(f'"{user[0]}" IS an admin. Should they be an admin? (y/n): ').lower(): #-----------first check
-
           if 'y' == input(f'Demote "{user[0]}"? (y/n): ').lower(): #------------Are you sure?
             run(f'sudo deluser {user[0]} adm')
             doubleprint(f'            {user[0]} DEMOTED from admin\n') #--------------done
       else:
         if 'y' == input(f'"{user[0]}" ISNT an admin. Should they be an admin? (y/n): ').lower(): #-----------first check
-
           if 'y' == input(f'Promote "{user[0]}"? (y/n): ').lower(): #------------Are you sure?
             run(f'sudo adduser {user[0]} adm')
             doubleprint(f'            {user[0]} PROMOTED to admin\n') #--------------done
+
+
+
 
       print(f'Should "{user[0]}" be deleted????? (y/n): ', end='')
       if 'y' == input().lower():
         print(f'ARE YOU ABSOLUTELY SURE YOU WANT TO DELETE {user[0]}????? (y/n): ', end='')
         time.sleep(4)
         if 'y' == input().lower():
-          run(f'sudo deluser {user[0]}')
+          run(f'sudo deluser {user[0]} --force') #-----------------------------------------------CAUTIONNNN IT WILL DELETE EVEN ROOT
           doubleprint(f'        {user[0]} deleted\n')
     else:
       doubleprint(f"'{user[0]}' not in a login shell\n", sendtext=False)
+
+
 
   input('Press anything to continue...')
 
