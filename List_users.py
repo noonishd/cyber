@@ -5,7 +5,7 @@ import time
 def main1():
   doubleprint(f'\n\n\nUsers:\n\n\n')
 
-#-----------------------------Checking_Users---------------------------------------
+#-----------------------------Checking_Users--------------------------------------- w
 
   valid_shells = run('cat /etc/shells')[1:]
 
