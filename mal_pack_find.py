@@ -7,6 +7,7 @@ from main import run, doubleprint
 
 
 def main2():
+    doubleprint(f'\n\n\nPackages:\n\n\n')
 #-------------------initializing--------------------------------------------------------------------------------------------------------------------------------------
 
     package_list = ['apache2', 'remmina', 'deluge', 'tcpdump', 'iodine', 'iodine-client', 'manaplus', 'gameconqueror', 
@@ -56,4 +57,4 @@ def main2():
 
 if __name__ == '__main__':
   main2()
-  input('Press enter to continue...   ')
+

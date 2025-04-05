@@ -37,13 +37,26 @@ if not(os.path.exists(run('pwd')[0] + '/master_log.txt')):
 
 if __name__ == '__main__':
     os.system('sudo chmod 755 main.py')
-    os.system('sudo chmod 755 Mal_pack_find.py')
-    os.system('sudo chmod 755 List_users.py')
+    
+
+    os.system('sudo chmod 755 user_audit.py')
+    from user_audit import main1 as user_audit
+
+    os.system('sudo chmod 755 mal_pack_find.py')
+    from mal_pack_find import main2 as mal_pack_find
+    
     os.system('sudo chmod 755 login_defs_config.py')
-    from List_users import main1 as List_users
-    from Mal_pack_find import main2 as Mal_pack_find
     from login_defs_config import main3 as login_defs_config
 
-    List_users()
-    Mal_pack_find()
+    os.system('sudo chmod 755 pams.py')
+    from pams import main4 as pams
+
+
+    user_audit()
+    input('Press enter to continue...   ')
+    mal_pack_find()
+    input('Press enter to continue...   ')
     login_defs_config()
+    input('Press enter to continue...   ')
+    pams()
+    input('Press enter to continue...   ')
