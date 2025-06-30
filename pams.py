@@ -24,7 +24,7 @@ def main4():
                 edits[i] = edits[i].replace('nullok', '')
                 doubleprint('nullok found! removed\n')
 
-    edits.append('auth\trequisite\t\t\tpam_faillock.so audit deny=5 unlock_time=900 even_deny_root_account\n')
+    edits.append('auth\trequisite\t\t\tpam_faillock.so audit deny=5 unlock_time=900 even_deny_root_account\n') #deny=3 fail_interval=900 unlock_time=600 even_deny_root
 
     with open(r'/etc/pam.d/common-auth', 'w') as file: #WRITES TO FILE
         file.writelines(edits)
