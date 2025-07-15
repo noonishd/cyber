@@ -1,2 +1,1 @@
-# Cyberpatriot 2024-2025 Sophomore year
-yooo wsg
+# Cyber 2024-2025 
