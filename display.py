@@ -13,7 +13,9 @@ def main():
         "Login config (login_defs_config.py)", #3
         "Pams (pams.py)", #4
         "Firewall (firewall in main)", #5
-        "ClamAV (clam in main)" #6
+        "ClamAV (clam in main; takes long)", #6
+        "SSH (ssh_config.py)", #7
+        "rc.local (rc_local in main)" #8
     ]
 
     def myFunction(*args):

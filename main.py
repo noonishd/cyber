@@ -19,14 +19,17 @@ except ModuleNotFoundError:
     os.system('pip install npyscreen')
 
 from datetime import datetime
+import time
 
 #----------------------------Important procedures-----------------------------
-def run(cmd):
+def run(cmd, sendToTerminal=False):
     output_lines = []
     process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, universal_newlines=True)
 
     for line in process.stdout:
         stripped = line.strip()
+        if sendToTerminal:
+            print(stripped)
         output_lines.append(stripped)
 
     process.wait()
@@ -66,29 +69,51 @@ if __name__ == '__main__':
     os.system('sudo chmod 755 pams.py')
     from pams import main as pams
 
+    os.system('sudo chmod 755 ssh_config.py')
+    from ssh_config import main as ssh_config
+
     #---------------------Non-file scripts--------------
     def firewall():
-        doubleprint("\n\n\nFirewall...\n\n\n")
+        doubleprint("\n\n\nFirewall:\n\n\n")
         doubleprint("Installing ufw...\n")
         firewall_output = run("sudo apt install ufw") #for debug
         firewall_output2 = run("sudo ufw enable")
         doubleprint(firewall_output2[-1] + "\n")
 
     def clam():
-        doubleprint("\n\n\nClamAV\n\n\n")
+        doubleprint("\n\n\nClamAV:\n\n\n")
         clam_output = run("sudo apt install clamav -y")
         if 'E: Unable to locate package' in clam_output:
             doubleprint('ClamAV install failed: updating sources\n')
             run('sudo apt update')
             run('sudo apt install clamav -y')
             doubleprint('clamav installed\n')
-        clam_output2 = run("clamscan")
-        doubleprint(clam_output2[-1])
+        if input("Are you ABSOLUTELY SURE you want to scan right now? (Will take ages) (y/n):") == 'y':
+            doubleprint("Scanning system (this may take a while go grab a snack or smth)...")
+            clam_output2 = run("sudo freshclam")
+            clam_output3 = run("clamscan -r /", sendToTerminal=True)
+            print(clam_output3)
 
+    def rc_local():
+        doubleprint("\n\n\nrc.local:\n\n\n")
+        with open(r'/etc/rc.local', 'w') as file:#--------------------------------------------------Appended
+            file.writelines([])
+        doubleprint('/etc/rc.local emptied!\n')
 
     #add to this to make it run after being selected through gui
-    scripts = ["all", user_audit, mal_pack_find, login_defs_config, pams, firewall, clam]
+    scripts = [
+        "all",
+        user_audit,
+        mal_pack_find,
+        login_defs_config,
+        pams,
+        firewall,
+        clam,
+        ssh_config,
+        rc_local]
 
+
+    #------------Script runner-----------------
     if len(scripts_to_run) < 1:
         print("Chose no scripts!!")
         quit()
@@ -100,22 +125,3 @@ if __name__ == '__main__':
         for i in scripts_to_run:
             scripts[i]()
             input('Press enter to continue...   ')
-
-"Run All :)", #0
-"Audit users (user_audit.py)", #1
-"Package managing (mal_pack_find.py)", #2
-"Login config (login_defs_config.py)", #3
-"Pams (pams.py)" #4
-
-
-
-"""
-    user_audit()
-    input('Press enter to continue...   ')
-    mal_pack_find()
-    input('Press enter to continue...   ')
-    login_defs_config()
-    input('Press enter to continue...   ')
-    pams()
-    input('Press enter to continue...   ')
-"""
