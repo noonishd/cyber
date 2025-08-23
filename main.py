@@ -1,5 +1,11 @@
+#!/usr/bin/env python
+# encoding: utf-8
 
 
+
+# if ever stuck downloading
+#sudo killall apt apt-get
+#sudo dpkg --configure -a
 import os
 import subprocess
 
@@ -60,8 +66,28 @@ if __name__ == '__main__':
     os.system('sudo chmod 755 pams.py')
     from pams import main as pams
 
-    #add to this to make it run
-    scripts = ["all", user_audit, mal_pack_find, login_defs_config, pams]
+    #---------------------Non-file scripts--------------
+    def firewall():
+        doubleprint("\n\n\nFirewall...\n\n\n")
+        doubleprint("Installing ufw...\n")
+        firewall_output = run("sudo apt install ufw") #for debug
+        firewall_output2 = run("sudo ufw enable")
+        doubleprint(firewall_output2[-1] + "\n")
+
+    def clam():
+        doubleprint("\n\n\nClamAV\n\n\n")
+        clam_output = run("sudo apt install clamav -y")
+        if 'E: Unable to locate package' in clam_output:
+            doubleprint('ClamAV install failed: updating sources\n')
+            run('sudo apt update')
+            run('sudo apt install clamav -y')
+            doubleprint('clamav installed\n')
+        clam_output2 = run("clamscan")
+        doubleprint(clam_output2[-1])
+
+
+    #add to this to make it run after being selected through gui
+    scripts = ["all", user_audit, mal_pack_find, login_defs_config, pams, firewall, clam]
 
     if len(scripts_to_run) < 1:
         print("Chose no scripts!!")
