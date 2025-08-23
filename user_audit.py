@@ -7,7 +7,7 @@
 from main import run, doubleprint
 import time
 
-def main1():
+def main():
   doubleprint(f'\n\n\nUsers:')
   doubleprint(f'\n\n\nIs not a catch-all: CHECK MANUALLY FOR FUNKY USERS ESPECIALLY ROOTS\n\n\n')
 
@@ -123,5 +123,5 @@ def main1():
 
 
 if __name__ == '__main__':
-  main1()
+  main()
 

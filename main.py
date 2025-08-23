@@ -2,14 +2,19 @@
 
 import os
 import subprocess
+
+#------------------------Dependencies-----------------------------------
 try:
     import pytz
+    import npyscreen
 except ModuleNotFoundError:
     os.system('sudo apt install pip -y')
     os.system('pip install pytz')
+    os.system('pip install npyscreen')
+
 from datetime import datetime
 
-
+#----------------------------Important procedures-----------------------------
 def run(cmd):
     output_lines = []
     process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, bufsize=1, universal_newlines=True)
@@ -29,29 +34,56 @@ def doubleprint(text, sendfile=True, sendtext=True):
     if sendtext:
         print(text, end="")
 
-
-#-------------------Creating_log_if_doesn't_exist_alr-------------------------- (FIX THIS===============================================================================) w
+#-------------------Creating_log_if_doesn't_exist_alr--------------------------
 if not(os.path.exists(run('pwd')[0] + '/master_log.txt')):
     with open(r'master_log.txt', 'w') as file: 
         file.write(f'\n\n\n\n\n\nLog created: {datetime.now(pytz.timezone("Canada/Pacific")).strftime("%I:%M:%S:%p")}')
 
 if __name__ == '__main__':
     os.system('sudo chmod 755 main.py')
-    
 
+    #-------------------------Display Section-----------------------------
+    os.system('sudo chmod 755 display.py')
+    from display import main as display
+    scripts_to_run = display()
+    
+    #---------------------------Grabbing procedures-------------------------
     os.system('sudo chmod 755 user_audit.py')
-    from user_audit import main1 as user_audit
+    from user_audit import main as user_audit
 
     os.system('sudo chmod 755 mal_pack_find.py')
-    from mal_pack_find import main2 as mal_pack_find
+    from mal_pack_find import main as mal_pack_find
     
     os.system('sudo chmod 755 login_defs_config.py')
-    from login_defs_config import main3 as login_defs_config
+    from login_defs_config import main as login_defs_config
 
     os.system('sudo chmod 755 pams.py')
-    from pams import main4 as pams
+    from pams import main as pams
+
+    #add to this to make it run
+    scripts = ["all", user_audit, mal_pack_find, login_defs_config, pams]
+
+    if len(scripts_to_run) < 1:
+        print("Chose no scripts!!")
+        quit()
+    elif 0 == scripts_to_run[0]:
+        for script in scripts[1:]:
+            script()
+            input('Press enter to continue...   ')
+    else:
+        for i in scripts_to_run:
+            scripts[i]()
+            input('Press enter to continue...   ')
+
+"Run All :)", #0
+"Audit users (user_audit.py)", #1
+"Package managing (mal_pack_find.py)", #2
+"Login config (login_defs_config.py)", #3
+"Pams (pams.py)" #4
 
 
+
+"""
     user_audit()
     input('Press enter to continue...   ')
     mal_pack_find()
@@ -60,3 +92,4 @@ if __name__ == '__main__':
     input('Press enter to continue...   ')
     pams()
     input('Press enter to continue...   ')
+"""

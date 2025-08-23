@@ -4,7 +4,7 @@ from main import run, doubleprint
 import os
 
 
-def main3():
+def main():
     doubleprint(f'\n\n\nlogin.defs:\n\n\n')
     doubleprint(f'\n(sudo gedit /etc/login.defs)\n', sendtext=False)
     doubleprint(f'(sudo nano /etc/login.defs)\n\n', sendtext=False)
@@ -41,4 +41,4 @@ def main3():
     #WORKINGNGNGNGNGNG
 
 if __name__ == '__main__':
-    main3()
+    main()

@@ -6,7 +6,7 @@
 from main import run, doubleprint
 
 
-def main2():
+def main():
     doubleprint(f'\n\n\nPackages:\n\n\n')
 #-------------------initializing--------------------------------------------------------------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ def main2():
     'metasploit', 'ophcrack', 'tetris', 'netris', 'john', 'medusa', 'netcat', 'nmap', 'nginx', 'lolcat', 'fcrackzip', 'fof', 'goldeneye', 
     'hydra', 'samba', 'ssh', 'sucrack', 'unworkable', 'changeme', 'endless-sky', 'pvpgn', 'seahub']
 
-    check = input('Enter the REQUIRED programs separated by spaces:')
+    check = input('Enter the REQUIRED programs separated by spaces: ')
     check = list(set(check.split(' ')))
     for pack in check:
         if pack in package_list:
@@ -51,10 +51,14 @@ def main2():
     if len(pack) > 0:
         for pack in check:
             doubleprint(f'                     Installing {pack}')
-            run(f'sudo apt install {pack} -y')
-            doubleprint(f"                          '{pack}' installed!!!\n")
+            output = run(f'sudo apt install {pack} -y')
+            print(output)
+            if f"E: Unable to locate package {pack}" == output[-1]:
+                doubleprint(f"                                  Could not install {pack}\n")
+            else:
+                doubleprint(f"                          '{pack}' installed!!!\n")
 
 
 if __name__ == '__main__':
-  main2()
+  main()
 

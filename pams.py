@@ -4,10 +4,12 @@
 from main import run, doubleprint
 import os
 
-def main4():
+def main():
     doubleprint(f'\n\n\nLibpams:\n\n\n')
     doubleprint(f'\n(sudo gedit /etc/pam.d/common-auth)\n', sendtext=False)
     doubleprint(f'(sudo nano /etc/pam.d/common-password)\n\n', sendtext=False)
+
+    doubleprint("Checking if libpam available...\n", sendfile=False)
 
     download_check = run('sudo apt install libpam-pwquality -y')
 
@@ -44,3 +46,6 @@ def main4():
     with open(r'/etc/pam.d/common-password', 'w') as file: #WRITES TO FILE
         file.writelines(edits2)
         doubleprint('Overwrote /etv/pam.d/common-password\n')
+
+if __name__ == '__main__':
+    main()
