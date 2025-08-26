@@ -44,14 +44,14 @@ def main():
                 doubleprint(f"                   '{pak_to_check}' found!!!           sudo apt-get purge --autoremove {pak_to_check}              CHECK IF NEEDED FIRST I STG\n")
 #-----------------------------Deleting------------------------------------
             if input(f'Delete {pak_to_check}? (y/n): ') == 'y':
-                run(f'sudo apt-get purge --autoremove {pak_to_check} -y')
+                run(f'sudo apt-get purge --autoremove {pak_to_check} -y', sendToTerminal=True)
                 doubleprint(f'                Uninstalled {pak_to_check}\n')
 
 # to be installed
     if len(pack) > 0:
         for pack in check:
             doubleprint(f'                     Installing {pack}')
-            output = run(f'sudo apt install {pack} -y')
+            output = run(f'sudo apt install {pack} -y', sendToTerminal=True)
             print(output)
             if f"E: Unable to locate package {pack}" == output[-1]:
                 doubleprint(f"                                  Could not install {pack}\n")

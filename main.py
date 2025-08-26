@@ -10,13 +10,17 @@ import os
 import subprocess
 
 #------------------------Dependencies-----------------------------------
+os.system("sudo apt update")
+os.system('sudo apt install python3 -y')
+os.system('sudo apt install python3-pip -y')
 try:
     import pytz
     import npyscreen
 except ModuleNotFoundError:
-    os.system('sudo apt install pip -y')
     os.system('pip install pytz')
     os.system('pip install npyscreen')
+    import pytz
+    import npyscreen
 
 from datetime import datetime
 import time
