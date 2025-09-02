@@ -8,7 +8,7 @@ sudo apt update
 sudo apt install python3 python3-pip -y
 cd ~/Downloads
 sudo wget https://github.com/noonishd/cyber/archive/refs/heads/main.zip && unzip main.zip
-sudo chmod 755 -R cyber-main && cd cyber-main && sudo ./main.py
+sudo chmod 755 -R cyber-main && cd cyber-main && python3 main.py
 ```
 > Note: you may need to sudo apt update to install everything
 ### Dependencies
