@@ -8,7 +8,9 @@ import os
 import subprocess
 import pytz
 from datetime import datetime
+import npyscreen
 import time
+
 
 if input("Have you done forensics, editing passwords, and other similar tasks that might be unavailable after running this script? (y/n):") != 'y':
     print("Do those first dummy")
