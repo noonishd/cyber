@@ -9,13 +9,12 @@ import subprocess
 from datetime import datetime
 import time
 try:
-    import npyscreen
     import pytz
+    import npyscreen
 except ModuleNotFoundError:
-    os.system("pip install pytz")
-    os.system("pip install npyscreen")
-    import npyscreen
-    import pytz
+    os.system('sudo apt install pip -y')
+    os.system('pip install pytz')
+    os.system('pip install npyscreen')
 
 if input("Have you done forensics, editing passwords, and other similar tasks that might be unavailable after running this script? (y/n):") != 'y':
     print("Do those first dummy")
