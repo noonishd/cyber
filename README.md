@@ -4,6 +4,7 @@ I pray you succeed
 If you mess this up I will cry  
 Paste this into ur terminal (Don't run as root):  
 ```
+sudo apt update
 sudo apt install python3 python3-pip -y
 pip install pytz npyscreen
 cd ~/
