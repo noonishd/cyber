@@ -7,7 +7,7 @@ Paste this into ur terminal (Don't run as root):
 sudo apt update
 sudo apt install python3 python3-pip -y
 pip install pytz npyscreen
-cd ~/
+cd ~/Downloads
 sudo wget https://github.com/noonishd/cyber/archive/refs/heads/main.zip && unzip main.zip
 sudo chmod 755 -R cyber-main && cd cyber-main && sudo ./main.py
 ```
