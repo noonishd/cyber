@@ -1,29 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
-
-
 
 # if ever stuck downloading
 #sudo killall apt apt-get
 #sudo dpkg --configure -a
 import os
 import subprocess
-
-#------------------------Dependencies-----------------------------------
-os.system("sudo apt update")
-os.system('sudo apt install python3 -y')
-os.system('sudo apt install python3-pip -y')
-try:
-    import pytz
-    import npyscreen
-except ModuleNotFoundError:
-    os.system('pip install pytz')
-    os.system('pip install npyscreen')
-    import pytz
-    import npyscreen
-
+import pytz
 from datetime import datetime
 import time
+
+if input("Have you done forensics, editing passwords, and other similar tasks that might be unavailable after running this script? (y/n):") != 'y':
+    print("Do those first dummy")
+    quit()
 
 #----------------------------Important procedures-----------------------------
 def run(cmd, sendToTerminal=False):
