@@ -6,11 +6,16 @@
 #sudo dpkg --configure -a
 import os
 import subprocess
-import pytz
 from datetime import datetime
-import npyscreen
 import time
-
+try:
+    import npyscreen
+    import pytz
+except ModuleNotFoundError:
+    os.system("pip install pytz")
+    os.system("pip install npyscreen")
+    import npyscreen
+    import pytz
 
 if input("Have you done forensics, editing passwords, and other similar tasks that might be unavailable after running this script? (y/n):") != 'y':
     print("Do those first dummy")
