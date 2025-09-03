@@ -16,10 +16,6 @@ except ModuleNotFoundError:
     os.system('pip install pytz')
     os.system('pip install npyscreen')
 
-if input("Have you done forensics, editing passwords, and other similar tasks that might be unavailable after running this script? (y/n):") != 'y':
-    print("Do those first dummy")
-    quit()
-
 #----------------------------Important procedures-----------------------------
 def run(cmd, sendToTerminal=False):
     output_lines = []
@@ -48,6 +44,13 @@ if not(os.path.exists(run('pwd')[0] + '/master_log.txt')):
         file.write(f'\n\n\n\n\n\nLog created: {datetime.now(pytz.timezone("Canada/Pacific")).strftime("%I:%M:%S:%p")}')
 
 if __name__ == '__main__':
+
+    if input("Have you done forensics, editing passwords, and other similar tasks that might be unavailable after running this script? (y/n):") != 'y':
+        print("Do those first dummy")
+        quit()
+        
+    os.system('clear')
+
     os.system('sudo chmod 755 main.py')
 
     #-------------------------Display Section-----------------------------
@@ -99,6 +102,12 @@ if __name__ == '__main__':
             file.writelines([])
         doubleprint('/etc/rc.local emptied!\n')
 
+    def sysctl():
+        doubleprint("\n\n\nsysctl:\n\n\n")
+        run("sudo wget https://github.com/klaver/sysctl/raw/refs/heads/master/sysctl.conf -o /etc/sysctl.conf", sendToTerminal=True)
+        run("sysctl -e -p /etc/sysctl.conf", sendToTerminal=True)
+        doubleprint("sysctl donee")
+        
     #add to this to make it run after being selected through gui
     scripts = [
         "all",
@@ -109,7 +118,8 @@ if __name__ == '__main__':
         firewall,
         clam,
         ssh_config,
-        rc_local]
+        rc_local,
+        sysctl]
 
 
     #------------Script runner-----------------
@@ -124,3 +134,6 @@ if __name__ == '__main__':
         for i in scripts_to_run:
             scripts[i]()
             input('Press enter to continue...   ')
+
+    os.system("clear")
+    doubleprint("REMINDER GO DO USERS AND WHATEVER ISNT DONE IN THE CHECKLIST REMEMBER THAT THERE COULD BE PROCESSES THAT REVERT WHAT THE SCRIPT DID")

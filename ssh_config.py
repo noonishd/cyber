@@ -3,8 +3,9 @@ import os
 
 def main():
     doubleprint(f'\n\n\nSSH:\n\n\n')
-    os.system("ssh-keygen")
-    os.system(f"ssh-copy-id {run('whoami')}@localhost")
+    #os.system("ssh-keygen")
+    #os.system(f"ssh-copy-id {run('whoami')[0]}@localhost")
+    input(f"ssh-keygen\nssh-copy-id {run('whoami')[0]}@localhost\nssh {run('whoami')[0]}@localhost\nDo this in another terminal rn")
 
     doubleprint(f'\n(sudo gedit /etc/ssh/sshd_config)\n', sendtext=False)
     doubleprint(f'(sudo nano /etc/ssh/sshd_config)\n\n', sendtext=False)

@@ -11,18 +11,9 @@ def main():
   doubleprint(f'\n\n\nUsers:')
   doubleprint(f'\n\n\nIs not a catch-all: CHECK MANUALLY FOR FUNKY USERS ESPECIALLY ROOTS\n\n\n')
 
-  
-
   auth_users = ['root']
-  while True:
-    ok_user = input('Please input a valid user [root is included by default] (type exit123 to finish): ')
-    if ok_user == 'exit123':
-      break
-    elif ok_user:
-      auth_users.append(ok_user)
-
-
-
+  ok_user = input('Please inputs valid users separated by spaces[root is included by default]: ')
+  auth_users += ok_user.split(' ')
 
   def delete_check():
     print(f'Should "{user[0]}" be deleted????? (y/n): ', end='')

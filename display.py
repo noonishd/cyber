@@ -15,7 +15,8 @@ def main():
         "Firewall (firewall in main)", #5
         "ClamAV (clam in main; takes long)", #6
         "SSH (ssh_config.py)", #7
-        "rc.local (rc_local in main)" #8
+        "rc.local (rc_local in main)", #8
+        "Sysctl (sysctl in main)" #9
     ]
 
     def myFunction(*args):
